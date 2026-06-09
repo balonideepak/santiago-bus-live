@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#cf152d" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Bus Live" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <title>Santiago Bus Live</title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="apple-touch-icon" href="https://www.red.cl/wp-content/themes/red/favicon/android-icon-192x192.png" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="top">
+        <div class="identity">
+          <img
+            class="brand-mark"
+            src="https://www.red.cl/wp-content/themes/red/favicon/android-icon-192x192.png"
+            alt="Red Movilidad logo"
+          />
+          <div>
+            <p class="eyebrow">Santiago, Chile</p>
+            <h1>Bus arrivals at your stop</h1>
+          </div>
+        </div>
+
+        <form id="search-form" class="search" autocomplete="off">
+          <label for="stop-input">Paradero code</label>
+          <div class="search-row">
+            <input id="stop-input" name="stop" value="PA433" placeholder="PA433" />
+            <button type="submit" aria-label="Check arrivals">
+              <span aria-hidden="true">↵</span>
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <section class="status-strip" aria-live="polite">
+        <div>
+          <span class="label">Stop</span>
+          <strong id="stop-title">Ready</strong>
+        </div>
+        <div>
+          <span class="label">Updated</span>
+          <strong id="updated-at">Not loaded yet</strong>
+        </div>
+        <div>
+          <span class="label">Routes</span>
+          <strong id="route-count">0</strong>
+        </div>
+      </section>
+
+      <section class="controls">
+        <div class="filter">
+          <label for="route-filter">Filter route</label>
+          <input id="route-filter" placeholder="506, 507..." />
+        </div>
+        <button id="refresh-button" type="button">Refresh</button>
+      </section>
+
+      <section id="message" class="message hidden"></section>
+      <section id="results" class="results"></section>
+    </main>
+
+    <template id="route-template">
+      <article class="route-card">
+        <div class="route-head">
+          <div class="route-badge"></div>
+          <div>
+            <h2></h2>
+            <p></p>
+          </div>
+        </div>
+        <div class="arrival-list"></div>
+        <p class="service-message"></p>
+      </article>
+    </template>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
